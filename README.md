@@ -21,8 +21,7 @@ Note that these settings are region specific in AWS, if you want to deploy to mu
 - Install the `vagrant-aws` plugin: `vagrant plugin install vagrant-aws`
 - Add the `dummy` aws box, the concrete config is done in the `Vagrantfile` and config: `vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box`
 
-Configure your desired cluster topology as well as AWS credentials in the `aws-config.yml.template` and rename it to `aws-config.yml`. All configuration is done is this file. The deployed shell files are in `scripts` folder. You can overwrite the configuration there. All changes from the original file are annotated with a `changed` comment.
-
+Configure your desired cluster topology as well as AWS credentials in the `aws-config.yml.template` and rename it to `aws-config.yml`. All configuration is done is this file.
 
 This has at the moment only been tested under `Ubuntu 16.04.LTS`, so you should choose your AMI accordingly.
 
