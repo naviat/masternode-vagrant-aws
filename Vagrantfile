@@ -46,18 +46,19 @@ Vagrant.configure(2) do |config|
             aws.ami = datacenter_info["ami"]
             aws.region = datacenter_info["region"]
             aws.instance_type = datacenter_info["instance_type"]
-            aws.security_groups = ["default", datacenter_info["security_group"]]
+            aws.security_groups = datacenter_info["security_groups"]
+            aws.associate_public_ip = 'true'
+            aws.subnet_id = datacenter_info["subnet_id"]
 
             override.vm.box = "dummy"
             override.ssh.username = "ubuntu"
             override.ssh.private_key_path = aws_config["keypath"]
+            override.vm.allowed_synced_folder_types = :rsync
           end
+          node.vm.synced_folder ".", "/vagrant", disable: true
         end
     
     end
   end  
-  # also disable deploying unique ssh keys to each machine
-  # which will break ansible in the current config
-  # this is not used when using aws anyhow
   config.ssh.insert_key = false
 end
